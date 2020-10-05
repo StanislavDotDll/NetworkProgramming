@@ -25,7 +25,7 @@ namespace NetworkProgramming
             string hostName = Dns.GetHostName();
             Console.WriteLine("Name: {0}", hostName);
 
-            PrintHostInfo("31.13.81.36"); // localhost
+            PrintHostInfo("92.52.138.128"); // localhost
         }
 
         private static void PrintHostInfo(string hostName)

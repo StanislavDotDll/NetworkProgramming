@@ -53,7 +53,7 @@ namespace _01_ServerTest
                     while (client.Available > 0);
                     // Перетворюємо масив байтів у рядок
                      
-                    Console.WriteLine("Got: {0}, count bytes = {1}", data, count);
+                    Console.WriteLine("Got from {2}: {0}, count bytes = {1}", data, count, client.RemoteEndPoint);
 
                     //6
                     string responce = String.Format("Got {0}", DateTime.Now.ToShortTimeString());
