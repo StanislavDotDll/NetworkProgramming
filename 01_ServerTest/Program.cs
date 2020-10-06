@@ -21,12 +21,16 @@ namespace _01_ServerTest
             // 7) shutdown, close
 
             // 1) Створили сокет
-            Socket server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = ipHost.AddressList[0];
+
+            Socket server = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
             // 2) 
             
             
             const int PORT = 2020;
-            IPEndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), PORT);
+            IPEndPoint ep = new IPEndPoint(ipAddress, PORT);
             try
             {
             server.Bind(ep);
@@ -37,6 +41,7 @@ namespace _01_ServerTest
                 Console.Title = "Server: " + ep;
                 while (true)
                 {
+                    Console.WriteLine("Wait for connection...");
                     // 4
                     Socket client = server.Accept(); // Wait for client
 
