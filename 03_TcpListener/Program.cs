@@ -17,7 +17,7 @@ namespace _03_TcpListener
             const int port = 2020;
             var ip = IPAddress.Parse("127.0.0.1");
             const int size = 512;
-            TcpListener server = new TcpListener(ip, port);
+            TcpListener server = new TcpListener(IPAddress.Any, port);
             try
             {
                 server.Start();
@@ -28,7 +28,7 @@ namespace _03_TcpListener
                     try
                     {
                         TcpClient client = server.AcceptTcpClient();
-                        Console.WriteLine("Connected: {0}", client.Client.LocalEndPoint);
+                        Console.WriteLine("Connected: {0}", client.Client.RemoteEndPoint);
                         NetworkStream stream = client.GetStream();
 
                         byte[] buffer = new byte[size];

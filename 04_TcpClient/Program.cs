@@ -18,7 +18,7 @@ namespace _04_TcpClient
                 //    client.Connect("127.0.0.1", port);
                 while (flag)
                 {
-                    client = new TcpClient("127.0.0.1", port);
+                    client = new TcpClient("92.52.138.128", port);
                     Console.WriteLine("Connected to server {0}", client.Client.RemoteEndPoint);
                     stream = client.GetStream();
                     Console.WriteLine("Enter message to send:");
