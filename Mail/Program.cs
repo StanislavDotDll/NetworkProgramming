@@ -2,6 +2,7 @@
 using MailKit.Net.Imap;
 using MimeKit;
 using System;
+using System.Configuration;
 using System.Linq;
 using System.Net; // NetworkCredentials
 using System.Net.Mail;
@@ -25,7 +26,11 @@ namespace Mail
         {
             Kit.SmtpClient client = new Kit.SmtpClient();
             await client.ConnectAsync("smtp.gmail.com", 587);
-            await client.AuthenticateAsync("projectsprog1@gmail.com", "qqwwee11!!");
+            var login = ConfigurationManager.AppSettings["login"];
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal);
+            var app = config.AppSettings;
+            var passw = ConfigurationManager.AppSettings["pass"];
+            await client.AuthenticateAsync(login, passw);
 
             MimeMessage mail = new MimeMessage();
             mail.From.Add(new MailboxAddress("projectsprog1@gmail.com"));
